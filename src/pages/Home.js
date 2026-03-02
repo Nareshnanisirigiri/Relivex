@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import BenefitsSection from "../components/BenefitsSection";
 import VideoSection from "../components/VideoSection";
@@ -11,7 +10,7 @@ import PainVideosSection from "../components/PainVideosSection";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      
       <HeroSection />
       <BenefitsSection />
       <VideoSection />

@@ -281,7 +281,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
-import bgVideo from "../assets/videos/v2.mp4";
+import bgVideo from "../assets/videos/v3.mp4";
 import productImage from "../assets/images/product.png";
 import h1Video from "../assets/videos/h1.mp4";
 import h2Video from "../assets/videos/h2.mp4";
