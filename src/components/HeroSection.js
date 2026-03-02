@@ -97,6 +97,186 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { Box, Typography, Button, Container, Grid } from "@mui/material";
+// import { motion } from "framer-motion";
+
+// import bgVideo from "../assets/videos/v2.mp4";
+// import productImage from "../assets/images/product.png";
+// import h1Video from "../assets/videos/h1.mp4";
+// import h2Video from "../assets/videos/h2.mp4";
+
+// export default function HeroSection() {
+//   const mediaList = [
+//     { type: "image", src: productImage },
+//     { type: "video", src: h1Video },
+//     { type: "video", src: h2Video },
+//   ];
+
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   // 🔄 Auto switch every 4 seconds
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prev) => (prev + 1) % mediaList.length);
+//     }, 4000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <Box
+//       sx={{
+//         position: "relative",
+//         height: "100vh",
+//         overflow: "hidden",
+//         display: "flex",
+//         alignItems: "center",
+//         color: "#fff",
+//       }}
+//     >
+//       {/* 🔥 Background Video */}
+//       <video
+//         autoPlay
+//         muted
+//         loop
+//         playsInline
+//         style={{
+//           position: "absolute",
+//           width: "100%",
+//           height: "100%",
+//           objectFit: "cover",
+//           zIndex: -2,
+//         }}
+//       >
+//         <source src={bgVideo} type="video/mp4" />
+//       </video>
+
+//       {/* 🔥 Dark Overlay */}
+//       <Box
+//         sx={{
+//           position: "absolute",
+//           width: "100%",
+//           height: "100%",
+//           background: "rgba(0,0,0,0.65)",
+//           zIndex: -1,
+//         }}
+//       />
+
+//       <Container>
+//         <Grid container spacing={6} alignItems="center">
+          
+//           {/* LEFT TEXT */}
+//           <Grid item xs={12} md={6}>
+//             <motion.div
+//               initial={{ opacity: 0, x: -80 }}
+//               animate={{ opacity: 1, x: 0 }}
+//               transition={{ duration: 1 }}
+//             >
+//               <Typography
+//                 variant="h2"
+//                 sx={{
+//                   fontWeight: "bold",
+//                   mb: 3,
+//                   fontSize: { xs: "2rem", md: "3.2rem" },
+//                 }}
+//               >
+//                 Stop Knee, Back & Shoulder Pain Naturally
+//               </Typography>
+
+//               <Typography
+//                 variant="h6"
+//                 sx={{ mb: 4, color: "#e2e8f0" }}
+//               >
+//                 Advanced Herbal Formula That Works Fast & Safe
+//               </Typography>
+
+//               <Button
+//                 variant="contained"
+//                 size="large"
+//                 sx={{
+//                   borderRadius: "50px",
+//                   px: 6,
+//                   backgroundColor: "#22c55e",
+//                   color: "#000",
+//                   fontWeight: "bold",
+//                   "&:hover": {
+//                     backgroundColor: "#16a34a",
+//                   },
+//                 }}
+//               >
+//                 Get Relief Now
+//               </Button>
+//             </motion.div>
+//           </Grid>
+
+//           {/* RIGHT MEDIA (Same Size Image & Videos) */}
+//           <Grid item xs={12} md={6} textAlign="center">
+//             <motion.div
+//               key={currentIndex}
+//               initial={{ opacity: 0, y: 60 }}
+//               animate={{ opacity: 1, y: 0 }}
+//               transition={{ duration: 0.8 }}
+//               style={{ display: "flex", justifyContent: "center" }}
+//             >
+//               <Box
+//                 sx={{
+//                   width: { xs: "280px", md: "420px" },
+//                   height: { xs: "280px", md: "420px" },
+//                   borderRadius: "20px",
+//                   overflow: "hidden",
+//                   boxShadow: "0 0 35px rgba(34,197,94,0.4)",
+//                 }}
+//               >
+//                 {mediaList[currentIndex].type === "image" ? (
+//                   <Box
+//                     component="img"
+//                     src={mediaList[currentIndex].src}
+//                     alt="Relivex Product"
+//                     sx={{
+//                       width: "100%",
+//                       height: "100%",
+//                       objectFit: "cover",
+//                     }}
+//                   />
+//                 ) : (
+//                   <Box
+//                     component="video"
+//                     src={mediaList[currentIndex].src}
+//                     autoPlay
+//                     muted
+//                     playsInline
+//                     sx={{
+//                       width: "100%",
+//                       height: "100%",
+//                       objectFit: "cover",
+//                     }}
+//                   />
+//                 )}
+//               </Box>
+//             </motion.div>
+//           </Grid>
+
+//         </Grid>
+//       </Container>
+//     </Box>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useState } from "react";
 import { Box, Typography, Button, Container, Grid } from "@mui/material";
 import { motion } from "framer-motion";
@@ -106,23 +286,23 @@ import productImage from "../assets/images/product.png";
 import h1Video from "../assets/videos/h1.mp4";
 import h2Video from "../assets/videos/h2.mp4";
 
-export default function HeroSection() {
-  const mediaList = [
-    { type: "image", src: productImage },
-    { type: "video", src: h1Video },
-    { type: "video", src: h2Video },
-  ];
+// ✅ Move outside component
+const mediaList = [
+  { type: "image", src: productImage },
+  { type: "video", src: h1Video },
+  { type: "video", src: h2Video },
+];
 
+export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 🔄 Auto switch every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % mediaList.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, []); // ✅ No ESLint error now
 
   return (
     <Box
@@ -135,7 +315,6 @@ export default function HeroSection() {
         color: "#fff",
       }}
     >
-      {/* 🔥 Background Video */}
       <video
         autoPlay
         muted
@@ -152,7 +331,6 @@ export default function HeroSection() {
         <source src={bgVideo} type="video/mp4" />
       </video>
 
-      {/* 🔥 Dark Overlay */}
       <Box
         sx={{
           position: "absolute",
@@ -165,8 +343,6 @@ export default function HeroSection() {
 
       <Container>
         <Grid container spacing={6} alignItems="center">
-          
-          {/* LEFT TEXT */}
           <Grid item xs={12} md={6}>
             <motion.div
               initial={{ opacity: 0, x: -80 }}
@@ -184,10 +360,7 @@ export default function HeroSection() {
                 Stop Knee, Back & Shoulder Pain Naturally
               </Typography>
 
-              <Typography
-                variant="h6"
-                sx={{ mb: 4, color: "#e2e8f0" }}
-              >
+              <Typography variant="h6" sx={{ mb: 4, color: "#e2e8f0" }}>
                 Advanced Herbal Formula That Works Fast & Safe
               </Typography>
 
@@ -210,7 +383,6 @@ export default function HeroSection() {
             </motion.div>
           </Grid>
 
-          {/* RIGHT MEDIA (Same Size Image & Videos) */}
           <Grid item xs={12} md={6} textAlign="center">
             <motion.div
               key={currentIndex}
@@ -256,7 +428,6 @@ export default function HeroSection() {
               </Box>
             </motion.div>
           </Grid>
-
         </Grid>
       </Container>
     </Box>
