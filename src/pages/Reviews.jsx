@@ -1,172 +1,3 @@
-// import {
-//   Container,
-//   Typography,
-//   Grid,
-//   Card,
-//   CardContent,
-//   Box,
-//   Avatar,
-//   Rating,
-// } from "@mui/material";
-// import { motion } from "framer-motion";
-// import { useEffect, useState } from "react";
-// import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
-
-// const MotionBox = motion(Box);
-// const MotionCard = motion(Card);
-
-// const reviews = [
-//   { name: "Rajesh Kumar", profession: "Software Engineer", rating: 5, review: "My knee pain reduced drastically within 3 weeks." },
-//   { name: "Anita Sharma", profession: "Yoga Instructor", rating: 5, review: "Excellent for shoulder and neck pain." },
-//   { name: "Vikram Reddy", profession: "Business Owner", rating: 4, review: "Back pain improved significantly." },
-//   { name: "Sneha Patel", profession: "Teacher", rating: 5, review: "My neck stiffness reduced quickly." },
-//   { name: "Arjun Mehta", profession: "Fitness Trainer", rating: 5, review: "Amazing joint support." },
-//   { name: "Priya Nair", profession: "Doctor", rating: 4, review: "Good formulation for joint relief." },
-//   { name: "Suresh Yadav", profession: "Driver", rating: 5, review: "Back pain relief after long driving hours." },
-//   { name: "Kavitha Rao", profession: "Homemaker", rating: 5, review: "Shoulder pain reduced within a month." },
-//   { name: "Rohit Verma", profession: "IT Consultant", rating: 4, review: "Laptop neck pain improved." },
-//   { name: "Deepa Singh", profession: "Nurse", rating: 5, review: "Standing knee pain relief." },
-//   { name: "Manoj Gupta", profession: "Accountant", rating: 5, review: "Back stiffness reduced." },
-//   { name: "Neha Kapoor", profession: "Designer", rating: 4, review: "Shoulder tension relief." },
-//   { name: "Amit Das", profession: "Gym Owner", rating: 5, review: "Excellent joint supplement." },
-//   { name: "Shalini Iyer", profession: "Professor", rating: 5, review: "More flexibility and energy." },
-//   { name: "Rahul Jain", profession: "Entrepreneur", rating: 4, review: "Backbone discomfort reduced." },
-//   { name: "Meena Kulkarni", profession: "Physiotherapist", rating: 5, review: "Inflammation control is great." },
-//   { name: "Kiran Reddy", profession: "Engineer", rating: 5, review: "Knee pain relief noticeable." },
-//   { name: "Lakshmi Devi", profession: "Retired Officer", rating: 4, review: "Reduced stiffness." },
-//   { name: "Harish Kumar", profession: "Sales Manager", rating: 5, review: "Neck and shoulder relief." },
-//   { name: "Pooja Malhotra", profession: "Marketing Executive", rating: 5, review: "Highly recommended." },
-// ];
-
-// export default function Reviews() {
-//   const [ratingValue, setRatingValue] = useState(0);
-
-//   useEffect(() => {
-//     let start = 0;
-//     const end = 4.8;
-//     const duration = 2000;
-//     const incrementTime = 20;
-
-//     const step = (end / duration) * incrementTime;
-
-//     const timer = setInterval(() => {
-//       start += step;
-//       if (start >= end) {
-//         start = end;
-//         clearInterval(timer);
-//       }
-//       setRatingValue(start);
-//     }, incrementTime);
-
-//     return () => clearInterval(timer);
-//   }, []);
-
-//   return (
-//     <Box sx={{ background: "linear-gradient(to bottom,#fff8f3,#eef2ff)", py: 12 }}>
-//       <Container maxWidth="lg">
-
-//         {/* HERO SECTION */}
-//         <MotionBox
-//           initial={{ opacity: 0, y: 40 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.8 }}
-//           viewport={{ once: true }}
-//           sx={{ textAlign: "center", mb: 10 }}
-//         >
-//           <Typography
-//             variant="h3"
-//             fontWeight="bold"
-//             sx={{
-//               background: "linear-gradient(45deg,#ff6a00,#ff3d00)",
-//               WebkitBackgroundClip: "text",
-//               WebkitTextFillColor: "transparent",
-//             }}
-//           >
-//             Customer Reviews
-//           </Typography>
-
-//           <Typography variant="h6" color="black" mt={2}>
-//             Trusted for Knee, Back, Shoulder & Neck Pain Relief
-//           </Typography>
-
-//           {/* Animated Counter */}
-//           <Typography
-//             variant="h2"
-//             fontWeight="bold"
-//             sx={{ mt: 4, color:"black" }}
-//           >
-//             {ratingValue.toFixed(1)} / 5
-//           </Typography>
-
-//           <Rating
-//             value={4.8}
-//             precision={0.1}
-//             readOnly
-//             size="large"
-//             sx={{ mt: 1 }}
-//           />
-
-//           <Typography variant="body2" color="black" mt={1}>
-//             Based on 2,000+ Happy Customers
-//           </Typography>
-//         </MotionBox>
-
-//         {/* REVIEWS GRID */}
-//         <Grid container spacing={4}>
-//           {reviews.map((item, index) => (
-//             <Grid item xs={12} sm={6} md={4} key={index}>
-//               <MotionCard
-//                 initial={{ opacity: 0, y: 50 }}
-//                 whileInView={{ opacity: 1, y: 0 }}
-//                 whileHover={{ y: -8 }}
-//                 transition={{ duration: 0.5 }}
-//                 viewport={{ once: true }}
-//                 sx={{
-//                   borderRadius: 5,
-//                   boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
-//                   height: "100%",
-//                 }}
-//               >
-//                 <CardContent>
-//                   <FormatQuoteIcon sx={{ fontSize: 35, color: "#ff6a00" }} />
-
-//                   <Typography variant="body1" sx={{ mb: 3 }}>
-//                     {item.review}
-//                   </Typography>
-
-//                   <Rating value={item.rating} readOnly />
-
-//                   <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
-//                     <Avatar sx={{ bgcolor: "#ff6a00", mr: 2 }}>
-//                       {item.name.charAt(0)}
-//                     </Avatar>
-//                     <Box>
-//                       <Typography fontWeight="bold">
-//                         {item.name}
-//                       </Typography>
-//                       <Typography variant="body2" color="text.secondary">
-//                         {item.profession}
-//                       </Typography>
-//                     </Box>
-//                   </Box>
-//                 </CardContent>
-//               </MotionCard>
-//             </Grid>
-//           ))}
-//         </Grid>
-//       </Container>
-//     </Box>
-//   );
-// }
-
-
-
-
-
-
-
-
-
 import {
   Container,
   Typography,
@@ -174,24 +5,74 @@ import {
   Avatar,
   Rating,
   IconButton,
+  Chip,
 } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import VerifiedIcon from "@mui/icons-material/Verified";
 
 const MotionBox = motion(Box);
 
 const reviews = [
-  { name: "Rajesh Kumar", profession: "Software Engineer", rating: 5, review: "My knee pain reduced drastically within 3 weeks." },
-  { name: "Anita Sharma", profession: "Yoga Instructor", rating: 5, review: "Excellent for shoulder and neck pain." },
-  { name: "Vikram Reddy", profession: "Business Owner", rating: 4, review: "Back pain improved significantly." },
-  { name: "Sneha Patel", profession: "Teacher", rating: 5, review: "My neck stiffness reduced quickly." },
-  { name: "Arjun Mehta", profession: "Fitness Trainer", rating: 5, review: "Amazing joint support." },
-  { name: "Priya Nair", profession: "Doctor", rating: 4, review: "Good formulation for joint relief." },
-  { name: "Suresh Yadav", profession: "Driver", rating: 5, review: "Back pain relief after long driving hours." },
-  { name: "Kavitha Rao", profession: "Homemaker", rating: 5, review: "Shoulder pain reduced within a month." },
+  {
+    name: "Rajesh Kumar",
+    profession: "IT Professional, 52",
+    rating: 5,
+    review:
+      "After 6 weeks of daily use, my knee stiffness reduced significantly. I can now climb stairs without discomfort. This is far better than the glucosamine tablets I tried before.",
+  },
+  {
+    name: "Anita Sharma",
+    profession: "Yoga Practitioner, 48",
+    rating: 5,
+    review:
+      "Morning stiffness improved within a month. I feel more flexibility in my knees during practice. The sachet format is easy and tastes good too.",
+  },
+  {
+    name: "Vikram Reddy",
+    profession: "Business Owner, 60",
+    rating: 4,
+    review:
+      "My orthopedic doctor suggested trying a nutraceutical. After 2 months, my walking distance improved and pain reduced noticeably.",
+  },
+  {
+    name: "Sneha Patel",
+    profession: "School Teacher, 55",
+    rating: 5,
+    review:
+      "I had early-stage knee osteoarthritis. After consistent use for 3 months, my pain while standing for long hours has reduced a lot.",
+  },
+  {
+    name: "Arjun Mehta",
+    profession: "Fitness Enthusiast, 45",
+    rating: 5,
+    review:
+      "Super Knee feels more advanced than regular turmeric supplements. My knee discomfort during workouts has reduced dramatically.",
+  },
+  {
+    name: "Priya Nair",
+    profession: "General Physician, 50",
+    rating: 5,
+    review:
+      "I appreciate the inclusion of UC-II and standardized Boswellia. Patients looking for non-NSAID support have responded well.",
+  },
+  {
+    name: "Suresh Yadav",
+    profession: "Driver, 58",
+    rating: 4,
+    review:
+      "Long driving hours used to worsen my knee pain. After 2 months of use, the pain is much more manageable.",
+  },
+  {
+    name: "Kavitha Rao",
+    profession: "Homemaker, 62",
+    rating: 5,
+    review:
+      "Getting up from sitting cross-legged was difficult earlier. Now it feels much easier. Very satisfied with the results.",
+  },
 ];
 
 export default function Reviews() {
@@ -202,7 +83,7 @@ export default function Reviews() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % reviews.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -240,7 +121,8 @@ export default function Reviews() {
     <Box
       sx={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg,#667eea,#764ba2)",
+        background:
+          "linear-gradient(135deg, #f4f6f8, #e8f5e9, #fff3e0)",
         display: "flex",
         alignItems: "center",
         py: 10,
@@ -253,15 +135,14 @@ export default function Reviews() {
           <Typography
             variant="h3"
             fontWeight="bold"
-            color="white"
+            color="#1b5e20"
           >
-            What Our Customers Say
+            Trusted by Thousands Across India
           </Typography>
 
           <Typography
             variant="h2"
             fontWeight="bold"
-            color="white"
             mt={3}
           >
             {ratingValue.toFixed(1)} / 5
@@ -272,11 +153,20 @@ export default function Reviews() {
             precision={0.1}
             readOnly
             size="large"
-            sx={{ mt: 1, "& .MuiRating-iconFilled": { color: "#FFD700" } }}
+            sx={{ mt: 1, "& .MuiRating-iconFilled": { color: "#ff9800" } }}
           />
 
-          <Typography color="white" mt={1}>
-            Based on 2,000+ Verified Reviews
+          <Box mt={2}>
+            <Chip
+              icon={<VerifiedIcon />}
+              label="2,000+ Verified Customers"
+              color="success"
+              variant="outlined"
+            />
+          </Box>
+
+          <Typography color="text.secondary" mt={2}>
+            Real experiences from adults managing knee pain and stiffness
           </Typography>
         </Box>
 
@@ -284,7 +174,7 @@ export default function Reviews() {
         <Box
           sx={{
             position: "relative",
-            height: { xs: 350, md: 280 },
+            height: { xs: 380, md: 300 },
           }}
         >
           <AnimatePresence mode="wait">
@@ -295,17 +185,16 @@ export default function Reviews() {
               exit={{ opacity: 0, scale: 0.9, y: -40 }}
               transition={{ duration: 0.6 }}
               sx={{
-                backdropFilter: "blur(15px)",
-                background: "rgba(255,255,255,0.15)",
+                background: "white",
                 borderRadius: 6,
                 padding: 5,
-                color: "white",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
-                border: "1px solid rgba(255,255,255,0.3)",
+                boxShadow: "0 20px 50px rgba(0,0,0,0.1)",
                 textAlign: "center",
               }}
             >
-              <FormatQuoteIcon sx={{ fontSize: 40, mb: 2 }} />
+              <FormatQuoteIcon
+                sx={{ fontSize: 40, mb: 2, color: "#ff6a00" }}
+              />
 
               <Typography variant="h6" mb={3}>
                 {reviews[index].review}
@@ -315,7 +204,7 @@ export default function Reviews() {
                 value={reviews[index].rating}
                 readOnly
                 sx={{
-                  "& .MuiRating-iconFilled": { color: "#FFD700" },
+                  "& .MuiRating-iconFilled": { color: "#ff9800" },
                 }}
               />
 
@@ -325,7 +214,13 @@ export default function Reviews() {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Avatar sx={{ bgcolor: "#ffffff", color: "#764ba2", mr: 2 }}>
+                <Avatar
+                  sx={{
+                    bgcolor: "#ff9800",
+                    color: "white",
+                    mr: 2,
+                  }}
+                >
                   {reviews[index].name.charAt(0)}
                 </Avatar>
 
@@ -333,7 +228,7 @@ export default function Reviews() {
                   <Typography fontWeight="bold">
                     {reviews[index].name}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant="body2" color="text.secondary">
                     {reviews[index].profession}
                   </Typography>
                 </Box>
@@ -349,7 +244,6 @@ export default function Reviews() {
               top: "50%",
               left: -40,
               transform: "translateY(-50%)",
-              color: "white",
             }}
           >
             <ArrowBackIosNewIcon />
@@ -362,12 +256,21 @@ export default function Reviews() {
               top: "50%",
               right: -40,
               transform: "translateY(-50%)",
-              color: "white",
             }}
           >
             <ArrowForwardIosIcon />
           </IconButton>
         </Box>
+
+        {/* FOOTER NOTE */}
+        <Box textAlign="center" mt={8}>
+          <Typography variant="body2" color="text.secondary">
+            *Results may vary. Super Knee is a nutraceutical supplement and
+            not intended to diagnose, treat, cure, or prevent any disease.
+            Consistent use for 60–90 days is recommended for optimal results.
+          </Typography>
+        </Box>
+
       </Container>
     </Box>
   );

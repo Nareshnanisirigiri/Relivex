@@ -1,192 +1,3 @@
-// import {
-//   Container,
-//   Typography,
-//   Grid,
-//   Box,
-//   Card,
-//   CardContent,
-//   Stepper,
-//   Step,
-//   StepLabel,
-// } from "@mui/material";
-// import { motion } from "framer-motion";
-
-// const MotionBox = motion(Box);
-// const MotionCard = motion(Card);
-
-// const steps = [
-//   {
-//     title: "Step 1: Absorption Boost",
-//     image:
-//       "https://starhiherbs.com/images/products/black-pepper-extract-1.jpg",
-//     content:
-//       "Piper Nigrum Extract enhances bioavailability, ensuring Curcumin and other nutrients are absorbed efficiently into the bloodstream.",
-//   },
-//   {
-//     title: "Step 2: Inflammation Reduction",
-//     image:
-//       "https://thumbs.dreamstime.com/b/fresh-turmeric-rhizome-curcumin-powder-wooden-table-plant-background-404347197.jpg",
-//     content:
-//       "Curcumin and Ginger work together to reduce inflammation at the root level, helping relieve stiffness and discomfort in joints.",
-//   },
-//   {
-//     title: "Step 3: Cartilage Protection",
-//     image:
-//       "https://media.istockphoto.com/id/2070759272/photo/boswellia-serrata.jpg?s=612x612&w=0&k=20&c=-EBg4mCtwapZf4tj9xH3ePw9WSlyy4dB91ceQ62RzBg=",
-//     content:
-//       "Boswellia helps protect cartilage from breakdown and supports smoother joint movement.",
-//   },
-//   {
-//     title: "Step 4: Joint Repair & Support",
-//     image:
-//       "https://www.lizearle.com/dw/image/v2/BGJR_PRD/on/demandware.static/-/Library-Sites-le-content-global/default/dw1c1c7a03/images/articles/what-is-collagen/Blog-Header-Collagen-Desktop.jpg?sw=720&q=85",
-//     content:
-//       "Undenatured Collagen Type II strengthens cartilage structure and improves cushioning between joints.",
-//   },
-// ];
-
-// export default function HowItWorks() {
-//   return (
-//     <Box
-//       sx={{
-//         background: "linear-gradient(to bottom, #fff8f3, #eef2ff)",
-//         position: "relative",
-//         overflow: "hidden",
-//       }}
-//     >
-//       {/* Background Glow */}
-//       <Box
-//         sx={{
-//           position: "absolute",
-//           width: 300,
-//           height: 300,
-//           background: "radial-gradient(circle,#ff9800,transparent)",
-//           borderRadius: "50%",
-//           top: -100,
-//           right: -100,
-//           filter: "blur(120px)",
-//           zIndex: 0,
-//         }}
-//       />
-
-//       <Container maxWidth="lg" sx={{ py: 12, position: "relative", zIndex: 2 }}>
-//         {/* HERO SECTION */}
-//         <MotionBox
-//           initial={{ opacity: 0, y: 60 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 1 }}
-//           viewport={{ once: true }}
-//           sx={{ textAlign: "center", mb: 12 }}
-//         >
-//           <Typography
-//             variant="h3"
-//             fontWeight="bold"
-//             sx={{
-//               background: "linear-gradient(45deg,#ff6a00,#ff3d00)",
-//               WebkitBackgroundClip: "text",
-//               WebkitTextFillColor: "transparent",
-//             }}
-//           >
-//             How It Works
-//           </Typography>
-
-//           <Typography variant="h6" color="black" mt={3}>
-//             A scientifically designed 4-step process for joint comfort and mobility
-//           </Typography>
-//         </MotionBox>
-
-//         {/* STEP SECTIONS */}
-//         {steps.map((step, index) => (
-//           <MotionBox
-//             key={index}
-//             initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-//             whileInView={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 0.8 }}
-//             viewport={{ once: true }}
-//             sx={{ mb: 14 }}
-//           >
-//             <Grid container spacing={8} alignItems="center">
-//               {/* IMAGE */}
-//               <Grid item xs={12} md={6}>
-//                 <MotionCard
-//                   whileHover={{ scale: 1.05 }}
-//                   transition={{ type: "spring", stiffness: 200 }}
-//                   sx={{
-//                     borderRadius: 6,
-//                     overflow: "hidden",
-//                     boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-//                   }}
-//                 >
-//                   <img
-//                     src={step.image}
-//                     alt={step.title}
-//                     style={{
-//                       width: "100%",
-//                       height: "420px",
-//                       objectFit: "cover",
-//                     }}
-//                   />
-//                 </MotionCard>
-//               </Grid>
-
-//               {/* CONTENT */}
-//               <Grid item xs={12} md={6}>
-//                 <Typography variant="h4" fontWeight="bold" gutterBottom sx={{color:"black"}}>
-//                   {step.title}
-//                 </Typography>
-
-//                 <Typography variant="body1" sx={{ mb: 4, color:"black" }}>
-//                   {step.content}
-//                 </Typography>
-
-//                 <Card
-//                   sx={{
-//                     borderRadius: 4,
-//                     background: "#080808",
-//                     boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-//                   }}
-//                 >
-//                   <CardContent>
-//                     <Typography variant="body2" color="text.secondary">
-//                       This step plays a crucial role in ensuring maximum
-//                       effectiveness of the formula and long-term joint support.
-//                     </Typography>
-//                   </CardContent>
-//                 </Card>
-//               </Grid>
-//             </Grid>
-//           </MotionBox>
-//         ))}
-
-//         {/* SUMMARY SECTION */}
-//         <MotionBox
-//           initial={{ opacity: 0, scale: 0.8 }}
-//           whileInView={{ opacity: 1, scale: 1 }}
-//           transition={{ duration: 0.8 }}
-//           viewport={{ once: true }}
-//           sx={{
-//             textAlign: "center",
-//             py: 10,
-//             borderRadius: 10,
-//             background: "linear-gradient(135deg,#ff6a00,#ff3d00)",
-//             color: "white",
-//             boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
-//           }}
-//         >
-//           <Typography variant="h4" fontWeight="bold">
-//             Complete Joint Protection Cycle
-//           </Typography>
-
-//           <Typography sx={{ mt: 3 }}>
-//             Absorb → Reduce Inflammation → Protect Cartilage → Strengthen & Support
-//           </Typography>
-//         </MotionBox>
-//       </Container>
-//     </Box>
-//   );
-// }
-
-
 import {
   Container,
   Typography,
@@ -194,40 +5,42 @@ import {
   Grid,
   Card,
   CardContent,
+  Divider,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import HealingIcon from "@mui/icons-material/Healing";
-import SpaIcon from "@mui/icons-material/Spa";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import ScienceIcon from "@mui/icons-material/Science";
+import BoltIcon from "@mui/icons-material/Bolt";
+import ShieldIcon from "@mui/icons-material/Shield";
+import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
+import LocalPharmacyIcon from "@mui/icons-material/LocalPharmacy";
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
 
 const steps = [
   {
-    icon: <HealingIcon sx={{ fontSize: 50 }} />,
-    title: "Step 1 – Absorption",
+    icon: <LocalPharmacyIcon sx={{ fontSize: 50 }} />,
+    title: "Step 1 – Advanced Absorption",
     description:
-      "Powerful herbal ingredients enter your bloodstream and begin targeting inflammation in knees, neck, shoulders and backbone.",
+      "CurQlife® Curcumin (48× bioavailable) combined with Piperine ensures rapid absorption. 80% release in 30 minutes, active for up to 24 hours — unlike ordinary turmeric supplements.",
   },
   {
-    icon: <SpaIcon sx={{ fontSize: 50 }} />,
-    title: "Step 2 – Reduce Inflammation",
+    icon: <BoltIcon sx={{ fontSize: 50 }} />,
+    title: "Step 2 – Multi-Pathway Inflammation Control",
     description:
-      "Natural anti-inflammatory compounds calm swollen joints and relax stiff muscles.",
+      "Curcumin blocks NF-κB, Boswellin® Super inhibits 5-LOX, and Ginger reduces CRP & IL-1 — targeting the core inflammatory pathways responsible for knee osteoarthritis pain.",
   },
   {
-    icon: <FavoriteIcon sx={{ fontSize: 50 }} />,
-    title: "Step 3 – Repair & Strengthen",
+    icon: <ShieldIcon sx={{ fontSize: 50 }} />,
+    title: "Step 3 – Immune-Driven Cartilage Protection",
     description:
-      "Supports cartilage repair and improves joint lubrication for smoother movement.",
+      "UC-II (Undenatured Type II Collagen) activates oral tolerance in the gut, stimulating regulatory T-cells to protect and preserve your knee cartilage naturally.",
   },
   {
-    icon: <SelfImprovementIcon sx={{ fontSize: 50 }} />,
-    title: "Step 4 – Restore Mobility",
+    icon: <DirectionsWalkIcon sx={{ fontSize: 50 }} />,
+    title: "Step 4 – Restore Mobility & Function",
     description:
-      "Improves flexibility, reduces pain, and helps you move freely again.",
+      "Reduced inflammation + cartilage preservation leads to improved flexibility, reduced stiffness, better walking ability, and enhanced joint comfort over 60–90 days.",
   },
 ];
 
@@ -237,10 +50,8 @@ export default function HowItWorks() {
       sx={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
+          "linear-gradient(135deg, #f4f6f8, #e8f5e9, #fff3e0)",
         py: 12,
-        display: "flex",
-        alignItems: "center",
       }}
     >
       <Container maxWidth="lg">
@@ -257,17 +68,21 @@ export default function HowItWorks() {
           <Typography
             variant="h3"
             fontWeight="bold"
-            color="white"
+            color="#1b5e20"
           >
-            How It Works
+            How Super Knee Works
           </Typography>
 
           <Typography
             variant="h6"
-            color="rgba(255,255,255,0.7)"
+            color="text.secondary"
             mt={2}
+            maxWidth="800px"
+            mx="auto"
           >
-            Natural Science Backed Joint Pain Relief Process
+            A scientifically engineered 5-ingredient synergy designed to reduce
+            inflammation, protect cartilage, and restore knee mobility —
+            naturally and safely.
           </Typography>
         </MotionBox>
 
@@ -282,14 +97,12 @@ export default function HowItWorks() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 sx={{
-                  backdropFilter: "blur(20px)",
-                  background: "rgba(255,255,255,0.08)",
                   borderRadius: 6,
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  color: "white",
+                  background: "white",
                   height: "100%",
                   textAlign: "center",
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+                  boxShadow: "0 15px 40px rgba(0,0,0,0.08)",
+                  p: 2,
                 }}
               >
                 <CardContent>
@@ -299,13 +112,14 @@ export default function HowItWorks() {
                       height: 80,
                       borderRadius: "50%",
                       background:
-                        "linear-gradient(45deg,#ff6a00,#ff3d00)",
+                        "linear-gradient(45deg,#ff6a00,#ff8f00)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       margin: "0 auto 20px auto",
                       boxShadow:
-                        "0 10px 30px rgba(255,106,0,0.6)",
+                        "0 10px 30px rgba(255,106,0,0.4)",
+                      color: "white",
                     }}
                   >
                     {step.icon}
@@ -321,7 +135,7 @@ export default function HowItWorks() {
 
                   <Typography
                     variant="body2"
-                    sx={{ color: "rgba(255,255,255,0.8)" }}
+                    color="text.secondary"
                   >
                     {step.description}
                   </Typography>
@@ -331,31 +145,91 @@ export default function HowItWorks() {
           ))}
         </Grid>
 
-        {/* FINAL SECTION */}
+        {/* SCIENCE HIGHLIGHT */}
         <MotionBox
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           textAlign="center"
           mt={12}
         >
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            color="white"
+          <Box
+            sx={{
+              background: "white",
+              borderRadius: 6,
+              p: 6,
+              boxShadow: "0 20px 60px rgba(0,0,0,0.1)",
+            }}
           >
-            Feel the Difference in Just Weeks
+            <ScienceIcon sx={{ fontSize: 60, color: "#ff6a00" }} />
+
+            <Typography variant="h4" fontWeight="bold" mt={2} mb={2}>
+              Backed by Published Clinical Research
+            </Typography>
+
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              maxWidth="800px"
+              mx="auto"
+            >
+              Super Knee combines internationally patented ingredients
+              supported by randomized controlled trials and peer-reviewed
+              publications in leading medical journals.
+            </Typography>
+          </Box>
+        </MotionBox>
+
+        {/* REFERENCES SECTION */}
+        <Box mt={12}>
+          <Divider sx={{ mb: 4 }} />
+
+          <Typography variant="h5" fontWeight="bold" gutterBottom>
+            Scientific References
           </Typography>
 
-          <Typography
-            variant="body1"
-            color="rgba(255,255,255,0.7)"
-            mt={2}
-          >
-            Trusted for knee pain, backbone stiffness, shoulder tension, and neck discomfort.
+          <Typography variant="body2" color="text.secondary" paragraph>
+            1. CurQlife® Bioavailability & Clinical Study — 48-fold higher bioavailability than standard curcuminoids. 60-day RCT showed 94% WOMAC improvement over placebo. (European Patent EP2852379A1).
           </Typography>
-        </MotionBox>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            2. Majeed A, et al. Frontiers in Pharmacology (2024); 15:1428440. Multi-center RCT (n=105) showing significant knee OA improvement within 5 days using standardized Boswellia extract.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            3. Majeed M, et al. Phytotherapy Research (2019); 33(5):1457-68. Randomized, double-blind trial on Boswellia serrata in knee osteoarthritis.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            4. Indonesian Biomedical Journal (2023); 15(3):257-265. UC-II clinical trial showing significant WOMAC and VAS improvement.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            5. Lodewyk et al. Biology (2020); 9(4):93. Review on Undenatured Type II Collagen in joint health.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            6. Altman RD, Marcussen KC. Arthritis & Rheumatism (2001); 44(11):2531-8. Ginger extract in knee OA.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            7. Bannuru RR, et al. Seminars in Arthritis and Rheumatism (2018); 48(3):416-429. Meta-analysis on Curcumin & Boswellia for knee OA.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            8. Shoba G, et al. Planta Medica (1998); 64(4):353-6. Piperine enhances curcumin bioavailability.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary" paragraph>
+            9. Arthritis Foundation Review — Ginger, Black Pepper & Curcumin combination comparable to Naproxen in knee OA.
+          </Typography>
+
+          <Typography variant="body2" color="text.secondary">
+            10. Indian epidemiological meta-analysis (2025) — Knee OA prevalence: 47% in elderly (60+), 28.7% overall in adults.
+          </Typography>
+        </Box>
+
       </Container>
     </Box>
   );

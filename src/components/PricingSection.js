@@ -31,7 +31,7 @@ export default function PricingSection() {
     <Box
       sx={{
         py: 10,
-        background: "linear-gradient(to right, #0f172a, #1e293b)"
+        background: "linear-gradient(to right, #f7f8fa, #054b13)"
       }}
     >
       <Container>
@@ -59,7 +59,7 @@ export default function PricingSection() {
                 <Card
                   sx={{
                     backgroundColor: plan.highlight
-                      ? "#22c55e"
+                      ? "#0f913e"
                       : "#0f172a",
                     color: plan.highlight ? "#000" : "#fff",
                     borderRadius: 4,
@@ -114,12 +114,12 @@ export default function PricingSection() {
                       sx={{
                         borderRadius: "30px",
                         px: 5,
-                        backgroundColor: plan.highlight
+                        backgroundColor:  "black"
                           ? "#000"
-                          : "#22c55e",
-                        color: plan.highlight ? "#22c55e" : "#000",
+                          : "#010101",
+                        color: plan.highlight ? "#0d0d0d" : "#000",
                         "&:hover": {
-                          backgroundColor: "#16a34a"
+                          backgroundColor: "#060606"
                         }
                       }}
                     >

@@ -1,86 +1,227 @@
-import React from "react";
-import { Box, Typography, Container, Grid, Card, CardContent } from "@mui/material";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import FlashOnIcon from "@mui/icons-material/FlashOn";
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Typography,
+  Container,
+  Grid,
+  Card,
+  Modal,
+  IconButton
+} from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import ScienceIcon from "@mui/icons-material/Science";
 import SpaIcon from "@mui/icons-material/Spa";
-import VerifiedIcon from "@mui/icons-material/Verified";
-import { motion } from "framer-motion";
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import LocalPharmacyIcon from "@mui/icons-material/LocalPharmacy";
+import MedicationIcon from "@mui/icons-material/Medication";
+import HealingIcon from "@mui/icons-material/Healing";
+import Inventory2Icon from "@mui/icons-material/Inventory2";
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+import BiotechIcon from "@mui/icons-material/Biotech";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 const benefits = [
   {
-    icon: <FlashOnIcon sx={{ fontSize: 50, color: "#22c55e" }} />,
-    title: "Fast Pain Relief",
-    description: "Starts working within minutes to reduce muscle discomfort."
+    title: "Knee Joint Supplement India",
+    icon: <AccessibilityNewIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Premium knee joint supplement specially formulated for Indian adults suffering from joint stiffness and osteoarthritis."
   },
   {
-    icon: <SpaIcon sx={{ fontSize: 50, color: "#22c55e" }} />,
-    title: "100% Herbal Formula",
-    description: "Made with natural anti-inflammatory ingredients."
+    title: "Best Supplement for Knee Pain",
+    icon: <HealingIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Clinically designed formulation targeting inflammation, cartilage damage and mobility issues."
   },
   {
-    icon: <LocalHospitalIcon sx={{ fontSize: 50, color: "#22c55e" }} />,
-    title: "Doctor Inspired",
-    description: "Carefully designed for safe and effective pain management."
+    title: "Curcumin Supplement for Knee OA",
+    icon: <ScienceIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Advanced curcumin technology supports reduction of inflammation in knee osteoarthritis patients."
   },
   {
-    icon: <VerifiedIcon sx={{ fontSize: 50, color: "#22c55e" }} />,
-    title: "Lab Tested & Safe",
-    description: "Quality checked to ensure safety and purity."
+    title: "Boswellia Supplement Knee Osteoarthritis",
+    icon: <SpaIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Boswellia extract helps reduce joint swelling and improves flexibility naturally."
+  },
+  {
+    title: "CurQlife Curcumin Supplement",
+    icon: <BiotechIcon sx={{ fontSize: 40 }} />,
+    content:
+      "High bioavailability CurQlife® technology delivers superior curcumin absorption for joint protection."
+  },
+  {
+    title: "Boswellin Super Supplement",
+    icon: <LocalPharmacyIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Boswellin® Super enhances anti-inflammatory action for better mobility and reduced stiffness."
+  },
+  {
+    title: "UC-II Collagen Knee Supplement",
+    icon: <MedicationIcon sx={{ fontSize: 40 }} />,
+    content:
+      "Undenatured Type II Collagen works via immune modulation to protect and repair joint cartilage."
   }
 ];
 
-export default function BenefitsSection() {
+export default function PremiumBenefitsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % benefits.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleOpen = (index) => {
+    setActiveIndex(index);
+    setOpen(true);
+  };
+
   return (
-    <Box sx={{ py: 8, backgroundColor: "#1e293b" }}>
+    <Box
+      sx={{
+        py: 8,
+        background: "linear-gradient(135deg, #f3f5f9)"
+      }}
+    >
       <Container>
+
         <Typography
           variant="h4"
           align="center"
           sx={{
             mb: 6,
             fontWeight: "bold",
-            fontSize: { xs: "1.8rem", md: "2.5rem" }
+            color: "#111",
+            fontSize: { xs: "1.6rem", md: "2.5rem" }
           }}
         >
-          Why Choose Relivex?
+          Advanced Knee & Joint Health Benefits
         </Typography>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={3} justifyContent="center">
           {benefits.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={6} sm={4} md={3} key={index}>
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <Card
+                  onClick={() => handleOpen(index)}
                   sx={{
-                    backgroundColor: "#0f172a",
+                    cursor: "pointer",
                     textAlign: "center",
                     p: 3,
                     borderRadius: 4,
-                    transition: "0.3s",
-                    "&:hover": {
-                      transform: "translateY(-10px)",
-                      boxShadow: "0 0 20px #22c55e"
-                    }
+                    background:
+                      activeIndex === index
+                        ? "rgba(34,197,94,0.25)"
+                        : "#fff",
+                    border:
+                      activeIndex === index
+                        ? "1px solid #22c55e"
+                        : "1px solid rgba(0,0,0,0.05)",
+                    boxShadow:
+                      activeIndex === index
+                        ? "0 0 20px #22c55e"
+                        : "0 4px 15px rgba(0,0,0,0.1)"
                   }}
                 >
-                  <CardContent>
+                  <Box sx={{ color: "#22c55e" }}>
                     {item.icon}
-                    <Typography variant="h6" sx={{ mt: 2, mb: 1 }}>
-                      {item.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: "#cbd5e1" }}>
-                      {item.description}
-                    </Typography>
-                  </CardContent>
+                  </Box>
+
+                  <Typography
+                    variant="body2"
+                    sx={{ mt: 1, fontWeight: 500 }}
+                  >
+                    {item.title}
+                  </Typography>
                 </Card>
               </motion.div>
             </Grid>
           ))}
         </Grid>
+
+        {/* FIXED MOBILE RESPONSIVE MODAL */}
+        <AnimatePresence>
+          {open && (
+            <Modal
+              open={open}
+              onClose={() => setOpen(false)}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                p: 2
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  width: "100%",
+                  maxWidth: "500px",
+                  maxHeight: "90vh",
+                  overflowY: "auto"
+                }}
+              >
+                <Box
+                  sx={{
+                    background: "#0f172a",
+                    borderRadius: 4,
+                    p: { xs: 3, md: 4 },
+                    color: "#fff",
+                    position: "relative"
+                  }}
+                >
+                  <IconButton
+                    onClick={() => setOpen(false)}
+                    sx={{
+                      position: "absolute",
+                      right: 10,
+                      top: 10,
+                      color: "#fff"
+                    }}
+                  >
+                    <CloseIcon />
+                  </IconButton>
+
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 2,
+                      color: "#22c55e",
+                      fontSize: { xs: "1.2rem", md: "1.5rem" }
+                    }}
+                  >
+                    {benefits[activeIndex].title}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      color: "#cbd5e1",
+                      lineHeight: 1.7,
+                      fontSize: { xs: "0.95rem", md: "1rem" }
+                    }}
+                  >
+                    {benefits[activeIndex].content}
+                  </Typography>
+                </Box>
+              </motion.div>
+            </Modal>
+          )}
+        </AnimatePresence>
+
       </Container>
     </Box>
   );

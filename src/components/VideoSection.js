@@ -8,7 +8,7 @@ export default function VideoSection() {
     <Box
       sx={{
         py: 10,
-        background: "linear-gradient(to right, #0f172a, #1e293b)"
+        background: "linear-gradient(to right, #ffff, #90ec86)"
       }}
     >
       <Container>
@@ -36,12 +36,19 @@ export default function VideoSection() {
               <Typography
                 variant="body1"
                 sx={{
-                  color: "#cbd5e1",
+                  color: "#0f0f0f",
                   fontSize: { xs: "1rem", md: "1.1rem" }
                 }}
               >
-                Watch how our advanced herbal powder quickly penetrates deep
-                into muscles to reduce neck, back, and shoulder pain naturally.
+                Super Knee is a nutraceutical product and is not intended to diagnose, 
+                treat, cure, or prevent any disease or disorder in human beings. 
+                This product is not to be used as a substitute for a varied diet. 
+                The information provided on this website is for educational purposes 
+                only and is not a substitute for professional medical advice. 
+                Always consult your physician or qualified healthcare professional before
+                 using any dietary supplement. Individual results may vary. 
+                 Claims regarding the ingredients are based on published clinical studies and scientific
+                  literature. This product is not for medicinal use..
               </Typography>
             </motion.div>
           </Grid>

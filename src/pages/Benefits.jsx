@@ -5,113 +5,151 @@ import {
   Card,
   Box,
   Button,
-  Chip,
+  Divider,
+  Stack,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
+const contentAnimation = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+};
+
 const ingredients = [
   {
-    title: "Curcumin (250mg)",
+    title: "CurQlife® Curcumin — 250 mg",
     image:
       "https://thumbs.dreamstime.com/b/fresh-turmeric-rhizome-curcumin-powder-wooden-table-plant-background-404347197.jpg",
     description:
-      "Curcumin is a clinically researched anti-inflammatory compound that helps reduce swelling, joint stiffness, and long-term discomfort.",
-    benefits: [
-      "Reduces inflammation naturally",
-      "Improves flexibility",
-      "Speeds up recovery",
-      "Supports antioxidant protection",
-    ],
+      "Patented by Laila Nutraceuticals | 48× More Bioavailable Than Standard Curcumin",
+    mechanism: `
+• Blocks NF-κB inflammatory pathway  
+• Reduces IL-1β, TNF-α, COX-2  
+• Targets inflammation at source  
+• Delivers highest FREE curcumin in blood
+    `,
+    clinical: `
+60-Day Randomized Trial (Age 40–75):
+
+• 94% improvement in WOMAC score  
+• 94.8% pain reduction  
+• 17× improvement in knee flexion  
+• 90% VAS pain reduction  
+• Zero adverse effects
+    `,
   },
   {
-    title: "Boswellia Serrata (250mg)",
+    title: "Boswellin® Super — 250 mg",
     image:
       "https://media.istockphoto.com/id/2070759272/photo/boswellia-serrata.jpg?s=612x612&w=0&k=20&c=-EBg4mCtwapZf4tj9xH3ePw9WSlyy4dB91ceQ62RzBg=",
     description:
-      "Boswellia helps maintain cartilage integrity and improves joint lubrication for smoother movement.",
-    benefits: [
-      "Reduces stiffness",
-      "Improves joint comfort",
-      "Supports cartilage health",
-      "Enhances mobility",
-    ],
+      "75% Boswellic Acids + 30% AKBA | Sami-Sabinsa Group",
+    mechanism: `
+• Inhibits 5-LOX enzyme  
+• Blocks TNF-α and IL-6  
+• Preserves cartilage matrix  
+• Lowers hs-CRP  
+• Stops inflammatory cascades
+    `,
+    clinical: `
+2024 Double-Blind Trial:
+
+• Pain relief begins in 5 days  
+• 61.9% VAS reduction  
+• 73.6% WOMAC improvement  
+• 44% X-ray joint space improvement  
+• No serious adverse events
+    `,
   },
   {
-    title: "Ginger Extract (250mg)",
+    title: "Ginger Extract — 250 mg",
     image:
       "https://media.istockphoto.com/id/647402644/photo/ginger-root-and-ginger-powder-in-the-bowl.jpg?s=612x612&w=0&k=20&c=cMu11RTfDuNT4C8DAgzYnEaxuX8O612sFtsNQvCfS9I=",
-    description:
-      "Ginger extract promotes circulation and works synergistically with curcumin for enhanced anti-inflammatory support.",
-    benefits: [
-      "Natural pain relief",
-      "Improves blood flow",
-      "Supports digestion",
-      "Boosts immune response",
-    ],
+    description: "Clinically Proven Anti-Inflammatory & Analgesic",
+    mechanism: `
+• Reduces CRP & IL-1  
+• Natural analgesic action  
+• Improves blood circulation  
+• Works synergistically with curcumin
+    `,
+    clinical: `
+• 261-patient trial showed significant pain reduction  
+• Comparable to Naproxen in 4 weeks  
+• Improved VAS & WOMAC scores  
+• Zero safety concerns
+    `,
   },
   {
-    title: "Collagen Type II (40mg)",
+    title: "Undenatured Type II Collagen (UC-II) — 40 mg",
     image:
       "https://www.lizearle.com/dw/image/v2/BGJR_PRD/on/demandware.static/-/Library-Sites-le-content-global/default/dw1c1c7a03/images/articles/what-is-collagen/Blog-Header-Collagen-Desktop.jpg?sw=720&q=85",
-    description:
-      "Undenatured Collagen Type II strengthens cartilage structure and improves cushioning between joints.",
-    benefits: [
-      "Supports cartilage repair",
-      "Improves joint cushioning",
-      "Maintains joint structure",
-      "Enhances flexibility",
-    ],
+    description: "Immune-Modulating Cartilage Protection",
+    mechanism: `
+• Activates Regulatory T-cells  
+• Suppresses cartilage-attacking immune cells  
+• Reduces TNF-α, IL-1β, IL-6  
+• Inhibits cartilage-destroying enzymes (MMPs)
+    `,
+    clinical: `
+90-Day Trial (102 Patients):
+
+• 81.6% WOMAC reduction  
+• 67.9% VAS pain reduction  
+• 75.8% functional improvement  
+• No adverse events
+    `,
   },
   {
-    title: "Piper Nigrum Extract (5mg)",
+    title: "Piper Nigrum Extract — 5 mg",
     image:
       "https://starhiherbs.com/images/products/black-pepper-extract-1.jpg",
-    description:
-      "Piper Nigrum enhances absorption of curcumin and other nutrients for maximum effectiveness.",
-    benefits: [
-      "Boosts nutrient absorption",
-      "Enhances bioavailability",
-      "Improves formula efficiency",
-      "Maximizes results",
-    ],
+    description: "Bioavailability Multiplier",
+    mechanism: `
+• Inhibits metabolic breakdown  
+• Blocks P-glycoprotein efflux  
+• Enhances GI blood flow  
+• Increases absorption up to 2000%
+    `,
+    clinical: `
+Widely studied bio-enhancer:
+
+• Enhances curcumin absorption significantly  
+• Improves nutrient transport  
+• Supports full formula potency
+    `,
   },
 ];
 
 export default function Benefits() {
-  return (
-    <Box
-      sx={{
-        background: "linear-gradient(to bottom, #fff8f3, #eef2ff)",
-        overflow: "hidden",
-        position: "relative",
-      }}
-    >
-      {/* Floating Background Glow */}
-      <Box
-        sx={{
-          position: "absolute",
-          width: 300,
-          height: 300,
-          background: "radial-gradient(circle,#ff9800,transparent)",
-          borderRadius: "50%",
-          top: -100,
-          left: -100,
-          filter: "blur(100px)",
-          zIndex: 0,
-        }}
-      />
+  const [activeTabs, setActiveTabs] = useState(
+    ingredients.map(() => "mechanism") // DEFAULT = mechanism
+  );
 
-      <Container maxWidth="lg" sx={{ py: 12, position: "relative", zIndex: 2 }}>
-        {/* HERO */}
+  const handleTabChange = (index, tab) => {
+    const updatedTabs = [...activeTabs];
+    updatedTabs[index] = tab;
+    setActiveTabs(updatedTabs);
+  };
+
+  return (
+    <Box sx={{ background: "#fff8f3", overflow: "hidden" }}>
+      <Container maxWidth="lg" sx={{ py: 14 }}>
         <MotionBox
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          initial="hidden"
+          whileInView="visible"
+          variants={fadeUp}
           viewport={{ once: true }}
-          sx={{ textAlign: "center", mb: 14 }}
+          sx={{ textAlign: "center", mb: 12 }}
         >
           <Typography
             variant="h3"
@@ -122,32 +160,26 @@ export default function Benefits() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Advanced Joint Support Formula
-          </Typography>
-
-          <Typography variant="h6" color="black" mt={3}>
-            Powerful combination of clinically researched ingredients for mobility, flexibility and comfort.
+            Super Knee™ Advanced Multi-Pathway Formula
           </Typography>
         </MotionBox>
 
-        {/* INGREDIENT SECTIONS */}
         {ingredients.map((item, index) => (
           <MotionBox
             key={index}
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             sx={{ mb: 14 }}
           >
-            <Grid container spacing={8} alignItems="center">
-              {/* IMAGE */}
+            <Grid container spacing={6} alignItems="center">
               <Grid item xs={12} md={6}>
                 <MotionCard
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 200 }}
                   sx={{
-                    borderRadius: 6,
+                    borderRadius: 5,
                     overflow: "hidden",
                     boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
                   }}
@@ -164,83 +196,73 @@ export default function Benefits() {
                 </MotionCard>
               </Grid>
 
-              {/* CONTENT */}
               <Grid item xs={12} md={6}>
-                <Typography variant="h4" fontWeight="bold" gutterBottom sx={{color:"black"}}>
+                <Typography variant="h4" fontWeight="bold" gutterBottom>
                   {item.title}
                 </Typography>
 
-                <Typography variant="body1" sx={{ mb: 4 , color:"black"}}>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ mb: 3, color: "#ff3d00", fontWeight: 600 }}
+                >
                   {item.description}
                 </Typography>
 
-                {/* Benefits List */}
-                <Grid container spacing={2}>
-                  {item.benefits.map((benefit, i) => (
-                    <Grid item xs={12} sm={6} key={i}>
-                      <MotionBox
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Chip
-                          label={`✔ ${benefit}`}
-                          sx={{
-                            width: "100%",
-                            py: 2,
-                            fontSize: "0.95rem",
-                            background: "#0f0f0f",
-                            boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
-                          }}
-                        />
-                      </MotionBox>
-                    </Grid>
-                  ))}
-                </Grid>
+                {/* BUTTONS */}
+                <Stack direction="row" spacing={2} mb={3}>
+                  <Button
+                    variant={
+                      activeTabs[index] === "mechanism"
+                        ? "contained"
+                        : "outlined"
+                    }
+                    onClick={() => handleTabChange(index, "mechanism")}
+                    sx={{ background: "#ff6a00" }}
+                  >
+                    Mechanism
+                  </Button>
+
+                  <Button
+                    variant={
+                      activeTabs[index] === "clinical"
+                        ? "contained"
+                        : "outlined"
+                    }
+                    onClick={() => handleTabChange(index, "clinical")}
+                    sx={{ borderColor: "#ff3d00", color: "#ff3d00" }}
+                  >
+                    Clinical Trial
+                  </Button>
+                </Stack>
+
+                {/* CONTENT SWITCH */}
+                <AnimatePresence mode="wait">
+                  <MotionBox
+                    key={activeTabs[index]}
+                    variants={contentAnimation}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                    sx={{
+                      p: 3,
+                      borderRadius: 3,
+                      background: "#ffffff",
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+                      whiteSpace: "pre-line",
+                    }}
+                  >
+                    {activeTabs[index] === "mechanism"
+                      ? item.mechanism
+                      : item.clinical}
+                  </MotionBox>
+                </AnimatePresence>
               </Grid>
             </Grid>
+
+            <Divider sx={{ mt: 10 }} />
           </MotionBox>
         ))}
-
-        {/* FINAL CTA */}
-        <MotionBox
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          sx={{
-            textAlign: "center",
-            py: 10,
-            borderRadius: 10,
-            background: "linear-gradient(135deg,#ff6a00,#ff3d00)",
-            color: "white",
-            boxShadow: "0 30px 60px rgba(0,0,0,0.25)",
-          }}
-        >
-          <Typography variant="h4" fontWeight="bold">
-            Experience Freedom of Movement
-          </Typography>
-
-          <Typography sx={{ mt: 3, mb: 5 }}>
-            Reduce stiffness. Improve flexibility. Support your joints naturally.
-          </Typography>
-
-          <MotionBox whileHover={{ scale: 1.1 }}>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                background: "white",
-                color: "#ff3d00",
-                fontWeight: "bold",
-                px: 6,
-                py: 1.5,
-                borderRadius: "50px",
-              }}
-            >
-              Order Now
-            </Button>
-          </MotionBox>
-        </MotionBox>
       </Container>
     </Box>
   );
