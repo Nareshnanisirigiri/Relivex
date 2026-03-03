@@ -13,12 +13,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
 import ScienceIcon from "@mui/icons-material/Science";
 import SpaIcon from "@mui/icons-material/Spa";
-import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import LocalPharmacyIcon from "@mui/icons-material/LocalPharmacy";
 import MedicationIcon from "@mui/icons-material/Medication";
 import HealingIcon from "@mui/icons-material/Healing";
-import Inventory2Icon from "@mui/icons-material/Inventory2";
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import BiotechIcon from "@mui/icons-material/Biotech";
 
 import { motion, AnimatePresence } from "framer-motion";

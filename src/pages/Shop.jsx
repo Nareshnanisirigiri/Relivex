@@ -15,7 +15,6 @@ import {
 import { motion } from "framer-motion";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
 import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 import ScienceIcon from "@mui/icons-material/Science";
